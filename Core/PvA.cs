@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using XO.Core.Abstracts;
+using XO.Forms;
 
 namespace XO.Core
 {
@@ -53,7 +54,7 @@ namespace XO.Core
         {
             for (var i = 0; i < field.Count; i++)
             {
-                if (field[i] == "O")
+                if (field[i] == GameField.O)
                 {
                     _playerMoves.Add(i);
                 }

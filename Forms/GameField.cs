@@ -8,11 +8,13 @@ namespace XO.Forms
 {
     public partial class GameField : Form
     {
-        private string _turn = "X";
         private readonly IGame _gameType;
         private readonly string[] _field;
         private bool _isAi;
         private readonly Form _start;
+        public const string X = "X";
+        public const string O = "O";
+        private string _turn = X;
 
         public GameField(IGame gameType, Form start)
         {
@@ -79,52 +81,52 @@ namespace XO.Forms
 
         private void NextMove()
         {
-            _turn = _turn == "X" ? "O" : "X";
+            _turn = _turn == X ? O : X;
         }
 
-        private void BtnClick(Control b, int ind)
+        private void BtnClick(Control button, int index)
         {
-            b.Text = _turn;
+            button.Text = _turn;
 
-            if (_turn == "O" || !_isAi)
+            if (_turn == O || !_isAi)
             {
-                _field[ind] = _turn;
+                _field[index] = _turn;
             }
 
-            b.Enabled = false;
+            button.Enabled = false;
 
             WhoWin();
 
-            if (_turn != "X") return;
+            if (_turn != X) return;
 
             AiMove();
         }
 
         private void WhoWin()
         {
-            if ((_field[0] == "X" & _field[1] == "X" & _field[2] == "X") | 
-                (_field[0] == "X" & _field[4] == "X" & _field[8] == "X") | 
-                (_field[0] == "X" & _field[3] == "X" & _field[6] == "X") | 
-                (_field[1] == "X" & _field[4] == "X" & _field[7] == "X") | 
-                (_field[2] == "X" & _field[5] == "X" & _field[8] == "X") | 
-                (_field[2] == "X" & _field[4] == "X" & _field[6] == "X") | 
-                (_field[3] == "X" & _field[4] == "X" & _field[5] == "X") | 
-                (_field[6] == "X" & _field[7] == "X" & _field[8] == "X"))
+            if ((_field[0] == X & _field[1] == X & _field[2] == X) | 
+                (_field[0] == X & _field[4] == X & _field[8] == X) | 
+                (_field[0] == X & _field[3] == X & _field[6] == X) | 
+                (_field[1] == X & _field[4] == X & _field[7] == X) | 
+                (_field[2] == X & _field[5] == X & _field[8] == X) | 
+                (_field[2] == X & _field[4] == X & _field[6] == X) | 
+                (_field[3] == X & _field[4] == X & _field[5] == X) | 
+                (_field[6] == X & _field[7] == X & _field[8] == X))
             {
-                MessageBox.Show(@"X WIN!");
+                MessageBox.Show(@"{0} WIN!", X);
                 Refresh();
             }
 
-            if ((_field[0] == "O" & _field[1] == "O" & _field[2] == "O") | 
-                (_field[0] == "O" & _field[4] == "O" & _field[8] == "O") | 
-                (_field[0] == "O" & _field[3] == "O" & _field[6] == "O") | 
-                (_field[1] == "O" & _field[4] == "O" & _field[7] == "O") | 
-                (_field[2] == "O" & _field[5] == "O" & _field[8] == "O") | 
-                (_field[2] == "O" & _field[4] == "O" & _field[6] == "O") | 
-                (_field[3] == "O" & _field[4] == "O" & _field[5] == "O") | 
-                (_field[6] == "O" & _field[7] == "O" & _field[8] == "O"))
+            if ((_field[0] == O & _field[1] == O & _field[2] == O) | 
+                (_field[0] == O & _field[4] == O & _field[8] == O) | 
+                (_field[0] == O & _field[3] == O & _field[6] == O) | 
+                (_field[1] == O & _field[4] == O & _field[7] == O) | 
+                (_field[2] == O & _field[5] == O & _field[8] == O) | 
+                (_field[2] == O & _field[4] == O & _field[6] == O) | 
+                (_field[3] == O & _field[4] == O & _field[5] == O) | 
+                (_field[6] == O & _field[7] == O & _field[8] == O))
             {
-                MessageBox.Show(@"O WIN!");
+                MessageBox.Show(@"{0} WIN!", O);
                 Refresh();
             }
 
@@ -148,16 +150,16 @@ namespace XO.Forms
 
             _gameType?.Clear();
 
-            _turn = "O";
+            _turn = O;
         }
 
         private void AiMove()
         {
-            if (!_isAi || _turn == "O") return;
+            if (!_isAi || _turn == O) return;
 
             var index = _gameType.Game(_field);
 
-            _field[index] = "X";
+            _field[index] = X;
 
             switch (index)
             {
