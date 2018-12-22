@@ -92,13 +92,15 @@ namespace XO.Core
                 _aiMoves.Add(0);
                 return 0;
             }
-            else if (field[6] == null && isHard)
+
+            if (field[6] == null && isHard)
             {
                 field[6] = "X";
                 _aiMoves.Add(6);
                 return 6;
             }
-            else if (field[2] == null && isHard)
+
+            if (field[2] == null && isHard)
             {
                 field[2] = "X";
                 _aiMoves.Add(2);
@@ -123,72 +125,78 @@ namespace XO.Core
                 field[1] = "X";
                 return 1;
             }
-            else if (((moves.Contains(0) && moves.Contains(6)) |
-                    (moves.Contains(4) && moves.Contains(5))) &
-                    field[3] == null)
+
+            if (((moves.Contains(0) && moves.Contains(6)) |
+                 (moves.Contains(4) && moves.Contains(5))) &
+                field[3] == null)
             {
                 field[3] = "X";
                 return 3;
             }
-            else if (((moves.Contains(0) && moves.Contains(8)) |
-                     (moves.Contains(2) && moves.Contains(6)) |
-                     (moves.Contains(1) && moves.Contains(7)) |
-                     (moves.Contains(3) && moves.Contains(5))) &
-                     field[4] == null)
+
+            if (((moves.Contains(0) && moves.Contains(8)) |
+                 (moves.Contains(2) && moves.Contains(6)) |
+                 (moves.Contains(1) && moves.Contains(7)) |
+                 (moves.Contains(3) && moves.Contains(5))) &
+                field[4] == null)
             {
                 field[4] = "X";
                 return 4;
             }
-            else if (((moves.Contains(2) && moves.Contains(8)) |
-                     (moves.Contains(3) && moves.Contains(4))) &
-                     field[5] == null)
+
+            if (((moves.Contains(2) && moves.Contains(8)) |
+                 (moves.Contains(3) && moves.Contains(4))) &
+                field[5] == null)
             {
                 field[5] = "X";
                 return 5;
             }
-            else if (((moves.Contains(6) && moves.Contains(8)) |
-                     (moves.Contains(1) && moves.Contains(4))) &
-                     field[7] == null)
+
+            if (((moves.Contains(6) && moves.Contains(8)) |
+                 (moves.Contains(1) && moves.Contains(4))) &
+                field[7] == null)
             {
                 field[7] = "X";
                 return 7;
             }
-            else if (((moves.Contains(0) && moves.Contains(1)) |
-                     (moves.Contains(8) && moves.Contains(5)) |
-                     (moves.Contains(4) && moves.Contains(6))) &
-                     field[2] == null)
+
+            if (((moves.Contains(0) && moves.Contains(1)) |
+                 (moves.Contains(8) && moves.Contains(5)) |
+                 (moves.Contains(4) && moves.Contains(6))) &
+                field[2] == null)
             {
                 field[2] = "X";
                 return 2;
             }
-            else if (((moves.Contains(1) && moves.Contains(2)) |
-                     (moves.Contains(6) && moves.Contains(3)) |
-                     (moves.Contains(8) && moves.Contains(4))) &
-                     field[0] == null)
+
+            if (((moves.Contains(1) && moves.Contains(2)) |
+                 (moves.Contains(6) && moves.Contains(3)) |
+                 (moves.Contains(8) && moves.Contains(4))) &
+                field[0] == null)
             {
                 field[0] = "X";
                 return 0;
             }
-            else if (((moves.Contains(2) && moves.Contains(5)) |
-                     (moves.Contains(7) && moves.Contains(6)) |
-                     (moves.Contains(0) && moves.Contains(4))) &
-                     field[8] == null)
+
+            if (((moves.Contains(2) && moves.Contains(5)) |
+                 (moves.Contains(7) && moves.Contains(6)) |
+                 (moves.Contains(0) && moves.Contains(4))) &
+                field[8] == null)
             {
                 field[8] = "X";
                 return 8;
             }
-            else if (((moves.Contains(7) && moves.Contains(8)) |
-                     (moves.Contains(2) && moves.Contains(4)) |
-                     (moves.Contains(0) && moves.Contains(3))) &
-                     field[6] == null)
+
+            if (((moves.Contains(7) && moves.Contains(8)) |
+                 (moves.Contains(2) && moves.Contains(4)) |
+                 (moves.Contains(0) && moves.Contains(3))) &
+                field[6] == null)
             {
                 field[6] = "X";
                 return 6;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 }
