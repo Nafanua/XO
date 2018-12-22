@@ -42,7 +42,7 @@ namespace XO.Core
 
             do
             {
-                pos = _random.Next(0, 8);
+                pos = _random.Next(0, 9);
             }
             while (field[pos] != null);
 

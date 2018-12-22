@@ -13,7 +13,7 @@ namespace XO.Forms
 
         private void PvP_Click(object sender, EventArgs e)
         {
-            var gf = new GameField(null);
+            var gf = new GameField(null, this);
             gf.Show();
             this.Hide();
         }
@@ -21,7 +21,7 @@ namespace XO.Forms
         private void PvA_Click(object sender, EventArgs e)
         {
             var gameType = new PvA(0);
-            var gf = new GameField(gameType);
+            var gf = new GameField(gameType, this);
             gf.Show();
             this.Hide();
         }
@@ -29,7 +29,7 @@ namespace XO.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             var gameType = new PvA(2);
-            var gf = new GameField(gameType);
+            var gf = new GameField(gameType, this);
             gf.Show();
             this.Hide();
         }
@@ -37,7 +37,7 @@ namespace XO.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             var gameType = new PvA(1);
-            var gf = new GameField(gameType);
+            var gf = new GameField(gameType, this);
             gf.Show();
             this.Hide();
         }

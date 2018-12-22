@@ -12,12 +12,13 @@ namespace XO.Forms
         private readonly IGame _gameType;
         private readonly string[] _field;
         private bool _isAi;
+        private readonly Form _start;
 
-        public GameField(IGame gameType)
+        public GameField(IGame gameType, Form start)
         {
             _field = new string[9];
             _gameType = gameType;
-           
+            _start = start;
             InitializeComponent();
         }
 
@@ -189,7 +190,7 @@ namespace XO.Forms
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Environment.Exit(0);
+            _start.Show();
         }
     }
 }
