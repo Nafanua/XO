@@ -155,7 +155,11 @@ namespace XO.Forms
         {
             if (!_isAi || _turn == "O") return;
 
-            switch (_gameType.Game(_field))
+            var index = _gameType.Game(_field);
+
+            _field[index] = "X";
+
+            switch (index)
             {
                 case 0:
                     button0_Click(new object(), new EventArgs());

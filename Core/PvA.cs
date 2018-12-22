@@ -46,22 +46,11 @@ namespace XO.Core
             }
             while (field[pos] != null);
 
-            field[pos] = "X";
-
             return pos;
         }
 
         private int SearchHardMove(IList<string> field, bool isHard)
         {
-            if (field.All(i => i == null) && isHard)
-            {
-                field[8] = "X";
-
-                _aiMoves.Add(8);
-
-                return 8;
-            }
-
             for (var i = 0; i < field.Count; i++)
             {
                 if (field[i] == "O")
@@ -86,25 +75,15 @@ namespace XO.Core
                 return defMove.Value;
             }
 
-            if (field[0] == null && isHard)
+            if (isHard)
             {
-                field[0] = "X";
-                _aiMoves.Add(0);
-                return 0;
-            }
+                var hardMode = HardMode(field);
 
-            if (field[6] == null && isHard)
-            {
-                field[6] = "X";
-                _aiMoves.Add(6);
-                return 6;
-            }
-
-            if (field[2] == null && isHard)
-            {
-                field[2] = "X";
-                _aiMoves.Add(2);
-                return 2;
+                if (hardMode.HasValue)
+                {
+                    _aiMoves.Add(hardMode.Value);
+                    return hardMode.Value;
+                }
             }
 
             return SearchEasyMove(field);
@@ -116,13 +95,37 @@ namespace XO.Core
             _aiMoves.Clear();
         }
 
+        private int? HardMode(IList<string> field)
+        {
+            if (field.All(i => i == null))
+            {
+                return 8;
+            }
+
+            if (field[0] == null)
+            {
+                return 0;
+            }
+
+            if (field[6] == null)
+            {
+                return 6;
+            }
+
+            if (field[2] == null)
+            {
+                return 2;
+            }
+
+            return null;
+        }
+
         private int? FindMove(IList<string> field, ICollection<int> moves)
         {
             if (((moves.Contains(0) && moves.Contains(2)) |
                 (moves.Contains(7) && moves.Contains(4))) &
                 field[1] == null)
             {
-                field[1] = "X";
                 return 1;
             }
 
@@ -130,7 +133,6 @@ namespace XO.Core
                  (moves.Contains(4) && moves.Contains(5))) &
                 field[3] == null)
             {
-                field[3] = "X";
                 return 3;
             }
 
@@ -140,7 +142,6 @@ namespace XO.Core
                  (moves.Contains(3) && moves.Contains(5))) &
                 field[4] == null)
             {
-                field[4] = "X";
                 return 4;
             }
 
@@ -148,7 +149,6 @@ namespace XO.Core
                  (moves.Contains(3) && moves.Contains(4))) &
                 field[5] == null)
             {
-                field[5] = "X";
                 return 5;
             }
 
@@ -156,7 +156,6 @@ namespace XO.Core
                  (moves.Contains(1) && moves.Contains(4))) &
                 field[7] == null)
             {
-                field[7] = "X";
                 return 7;
             }
 
@@ -165,7 +164,6 @@ namespace XO.Core
                  (moves.Contains(4) && moves.Contains(6))) &
                 field[2] == null)
             {
-                field[2] = "X";
                 return 2;
             }
 
@@ -174,7 +172,6 @@ namespace XO.Core
                  (moves.Contains(8) && moves.Contains(4))) &
                 field[0] == null)
             {
-                field[0] = "X";
                 return 0;
             }
 
@@ -183,7 +180,6 @@ namespace XO.Core
                  (moves.Contains(0) && moves.Contains(4))) &
                 field[8] == null)
             {
-                field[8] = "X";
                 return 8;
             }
 
@@ -192,7 +188,6 @@ namespace XO.Core
                  (moves.Contains(0) && moves.Contains(3))) &
                 field[6] == null)
             {
-                field[6] = "X";
                 return 6;
             }
 
