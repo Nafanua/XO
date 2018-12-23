@@ -94,9 +94,10 @@ namespace XO.Forms
 
             WhoWin();
 
-            if (_turn != X) return;
-
-            AiMove();
+            if (_isAi && _turn == X)
+            {
+                AiMove();
+            }
         }
 
         private void WhoWin()
@@ -139,40 +140,9 @@ namespace XO.Forms
 
         private void AiMove()
         {
-            if (!_isAi || _turn == O) return;
-
             var move = _ai.Move(_field);
 
-            switch (move)
-            {
-                case 0:
-                    BtnClick(button0, move);
-                    break;
-                case 1:
-                    BtnClick(button1, move);
-                    break;
-                case 2:
-                    BtnClick(button2, move);
-                    break;
-                case 3:
-                    BtnClick(button3, move);
-                    break;
-                case 4:
-                    BtnClick(button4, move);
-                    break;
-                case 5:
-                    BtnClick(button5, move);
-                    break;
-                case 6:
-                    BtnClick(button6, move);
-                    break;
-                case 7:
-                    BtnClick(button7, move);
-                    break;
-                case 8:
-                    BtnClick(button8, move);
-                    break;
-            }
+            BtnClick(Controls.Find("button" + move, false).First(), move);
         }
 
         protected override void OnClosed(EventArgs e)
