@@ -88,10 +88,7 @@ namespace XO.Forms
         {
             button.Text = _turn;
 
-            if (_turn == O || !_isAi)
-            {
-                _field[index] = _turn;
-            }
+            _field[index] = _turn;
 
             button.Enabled = false;
 
@@ -158,8 +155,6 @@ namespace XO.Forms
             if (!_isAi || _turn == O) return;
 
             var move = _ai.Move(_field);
-
-            _field[move] = X;
 
             switch (move)
             {
