@@ -164,31 +164,31 @@ namespace XO.Forms
             switch (move)
             {
                 case 0:
-                    button0_Click(new object(), new EventArgs());
+                    BtnClick(button0, move);
                     break;
                 case 1:
-                    button1_Click(new object(), new EventArgs());
+                    BtnClick(button1, move);
                     break;
                 case 2:
-                    button2_Click(new object(), new EventArgs());
+                    BtnClick(button2, move);
                     break;
                 case 3:
-                    button3_Click(new object(), new EventArgs());
+                    BtnClick(button3, move);
                     break;
                 case 4:
-                    button4_Click(new object(), new EventArgs());
+                    BtnClick(button4, move);
                     break;
                 case 5:
-                    button5_Click(new object(), new EventArgs());
+                    BtnClick(button5, move);
                     break;
                 case 6:
-                    button6_Click(new object(), new EventArgs());
+                    BtnClick(button6, move);
                     break;
                 case 7:
-                    button7_Click(new object(), new EventArgs());
+                    BtnClick(button7, move);
                     break;
                 case 8:
-                    button8_Click(new object(), new EventArgs());
+                    BtnClick(button8, move);
                     break;
             }
         }
