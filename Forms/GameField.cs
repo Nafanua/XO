@@ -101,29 +101,16 @@ namespace XO.Forms
 
         private void WhoWin()
         {
-            if ((_field[0] == X & _field[1] == X & _field[2] == X) | 
-                (_field[0] == X & _field[4] == X & _field[8] == X) | 
-                (_field[0] == X & _field[3] == X & _field[6] == X) | 
-                (_field[1] == X & _field[4] == X & _field[7] == X) | 
-                (_field[2] == X & _field[5] == X & _field[8] == X) | 
-                (_field[2] == X & _field[4] == X & _field[6] == X) | 
-                (_field[3] == X & _field[4] == X & _field[5] == X) | 
-                (_field[6] == X & _field[7] == X & _field[8] == X))
+            if ((_field[0] == _field[1] & _field[0] == _field[2] & _field[0] != null) | 
+                (_field[0] == _field[4] & _field[8] == _field[0] & _field[0] != null) | 
+                (_field[0] == _field[3] & _field[6] == _field[0] & _field[0] != null) | 
+                (_field[1] == _field[4] & _field[7] == _field[1] & _field[1] != null) | 
+                (_field[2] == _field[5] & _field[8] == _field[2] & _field[2] != null) | 
+                (_field[2] == _field[4] & _field[6] == _field[2] & _field[2] != null) | 
+                (_field[3] == _field[4] & _field[5] == _field[3] & _field[3] != null) | 
+                (_field[6] == _field[7] & _field[8] == _field[6] & _field[6] != null))
             {
-                MessageBox.Show($@"{X} WIN!");
-                Refresh();
-            }
-
-            if ((_field[0] == O & _field[1] == O & _field[2] == O) | 
-                (_field[0] == O & _field[4] == O & _field[8] == O) | 
-                (_field[0] == O & _field[3] == O & _field[6] == O) | 
-                (_field[1] == O & _field[4] == O & _field[7] == O) | 
-                (_field[2] == O & _field[5] == O & _field[8] == O) | 
-                (_field[2] == O & _field[4] == O & _field[6] == O) | 
-                (_field[3] == O & _field[4] == O & _field[5] == O) | 
-                (_field[6] == O & _field[7] == O & _field[8] == O))
-            {
-                MessageBox.Show($@"{O} WIN!");
+                MessageBox.Show($@"{_turn} WIN!");
                 Refresh();
             }
 
