@@ -8,7 +8,7 @@ namespace XO.Forms
 {
     public partial class GameField : Form
     {
-        private readonly IGame _gameType;
+        private readonly IGame _ai;
         private readonly string[] _field;
         private bool _isAi;
         private readonly Form _start;
@@ -16,10 +16,10 @@ namespace XO.Forms
         public const string O = "O";
         private string _turn = X;
 
-        public GameField(IGame gameType, Form start)
+        public GameField(IGame aiMode, Form start)
         {
             _field = new string[9];
-            _gameType = gameType;
+            _ai = aiMode;
             _start = start;
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace XO.Forms
         {
             base.OnLoad(e);
 
-            if (!(_gameType is PvA)) return;
+            if (!(_ai is PvA)) return;
 
             _isAi = true;
             AiMove();
@@ -113,7 +113,7 @@ namespace XO.Forms
                 (_field[3] == X & _field[4] == X & _field[5] == X) | 
                 (_field[6] == X & _field[7] == X & _field[8] == X))
             {
-                MessageBox.Show(@"{0} WIN!", X);
+                MessageBox.Show($@"{X} WIN!");
                 Refresh();
             }
 
@@ -126,7 +126,7 @@ namespace XO.Forms
                 (_field[3] == O & _field[4] == O & _field[5] == O) | 
                 (_field[6] == O & _field[7] == O & _field[8] == O))
             {
-                MessageBox.Show(@"{0} WIN!", O);
+                MessageBox.Show($@"{O} WIN!");
                 Refresh();
             }
 
@@ -148,7 +148,7 @@ namespace XO.Forms
                 _field[i] = null;
             }
 
-            _gameType?.Clear();
+            _ai?.Clear();
 
             _turn = O;
         }
@@ -157,11 +157,11 @@ namespace XO.Forms
         {
             if (!_isAi || _turn == O) return;
 
-            var index = _gameType.Game(_field);
+            var move = _ai.Move(_field);
 
-            _field[index] = X;
+            _field[move] = X;
 
-            switch (index)
+            switch (move)
             {
                 case 0:
                     button0_Click(new object(), new EventArgs());

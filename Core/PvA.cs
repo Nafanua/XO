@@ -21,10 +21,10 @@ namespace XO.Core
             _complexity = complexity;
             _random = new Random();
             _aiMoves = new List<int>(5);
-            _playerMoves = new List<int>(5);
+            _playerMoves = new List<int>(4);
         }
 
-        public int Game(string[] field)
+        public int Move(string[] field)
         {
             switch (_complexity)
             {

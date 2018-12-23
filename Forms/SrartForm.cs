@@ -20,29 +20,29 @@ namespace XO.Forms
 
         private void PvA_Click(object sender, EventArgs e)
         {
-            var gameType = new PvA(0);
-            var gf = new GameField(gameType, this);
+            var aiMode = new PvA(0);
+            var gf = new GameField(aiMode, this);
             gf.Show();
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Unreal_Click(object sender, EventArgs e)
         {
-            var gameType = new PvA(2);
-            var gf = new GameField(gameType, this);
+            var aiMode = new PvA(2);
+            var gf = new GameField(aiMode, this);
             gf.Show();
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void MiddleAi_Click(object sender, EventArgs e)
         {
-            var gameType = new PvA(1);
-            var gf = new GameField(gameType, this);
+            var aiMode = new PvA(1);
+            var gf = new GameField(aiMode, this);
             gf.Show();
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

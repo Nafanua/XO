@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm));
             this.PvP = new System.Windows.Forms.Button();
             this.PvA = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Unreal = new System.Windows.Forms.Button();
+            this.MiddleAi = new System.Windows.Forms.Button();
+            this.Exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PvP
@@ -56,44 +56,44 @@
             this.PvA.UseVisualStyleBackColor = true;
             this.PvA.Click += new System.EventHandler(this.PvA_Click);
             // 
-            // button1
+            // Unreal
             // 
-            this.button1.Location = new System.Drawing.Point(38, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Player vs Hard AI";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Unreal.Location = new System.Drawing.Point(38, 115);
+            this.Unreal.Name = "Unreal";
+            this.Unreal.Size = new System.Drawing.Size(109, 23);
+            this.Unreal.TabIndex = 2;
+            this.Unreal.Text = "Player vs Unreal AI";
+            this.Unreal.UseVisualStyleBackColor = true;
+            this.Unreal.Click += new System.EventHandler(this.Unreal_Click);
             // 
-            // button2
+            // MiddleAi
             // 
-            this.button2.Location = new System.Drawing.Point(38, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Player vs Middle Ai";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.MiddleAi.Location = new System.Drawing.Point(38, 86);
+            this.MiddleAi.Name = "MiddleAi";
+            this.MiddleAi.Size = new System.Drawing.Size(109, 23);
+            this.MiddleAi.TabIndex = 3;
+            this.MiddleAi.Text = "Player vs Middle Ai";
+            this.MiddleAi.UseVisualStyleBackColor = true;
+            this.MiddleAi.Click += new System.EventHandler(this.MiddleAi_Click);
             // 
-            // button3
+            // Exit
             // 
-            this.button3.Location = new System.Drawing.Point(38, 143);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Exit";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Exit.Location = new System.Drawing.Point(38, 143);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(109, 23);
+            this.Exit.TabIndex = 4;
+            this.Exit.Text = "Exit";
+            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(186, 178);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.MiddleAi);
+            this.Controls.Add(this.Unreal);
             this.Controls.Add(this.PvA);
             this.Controls.Add(this.PvP);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -108,9 +108,9 @@
 
         private System.Windows.Forms.Button PvP;
         private System.Windows.Forms.Button PvA;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Unreal;
+        private System.Windows.Forms.Button MiddleAi;
+        private System.Windows.Forms.Button Exit;
     }
 }
 

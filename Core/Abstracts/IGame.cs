@@ -2,7 +2,7 @@
 {
     public interface IGame
     {
-        int Game(string[] field);
+        int Move(string[] field);
         void Clear();
     }
 }
