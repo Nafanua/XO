@@ -8,15 +8,15 @@ namespace XO.Forms
 {
     public partial class GameField : Form
     {
-        private readonly IGame _ai;
-        private readonly string[] _field;
-        private bool _isAi;
-        private readonly Form _start;
         public const string X = "X";
         public const string O = "O";
+        private readonly IAi _ai;
+        private readonly Form _start;
+        private readonly string[] _field;
+        private bool _isAi;
         private string _turn = X;
 
-        public GameField(IGame aiMode, Form start)
+        public GameField(IAi aiMode, Form start)
         {
             _field = new string[9];
             _ai = aiMode;
@@ -28,7 +28,7 @@ namespace XO.Forms
         {
             base.OnLoad(e);
 
-            if (!(_ai is PvA)) return;
+            if (!(_ai is Ai)) return;
 
             _isAi = true;
             AiMove();
@@ -88,9 +88,9 @@ namespace XO.Forms
         {
             button.Text = _turn;
 
-            _field[index] = _turn;
-
             button.Enabled = false;
+
+            _field[index] = _turn;
 
             WhoWin();
 

@@ -6,22 +6,19 @@ using XO.Forms;
 
 namespace XO.Core
 {
-    public class PvA : IGame
+    public class Ai : IAi
     {
         private readonly Random _random;
-
         private readonly List<int> _aiMoves;
-
-        private readonly List<int> _playerMoves;
-
+        private readonly List<int> _enemyMoves;
         private readonly int _complexity;
 
-        public PvA(int complexity)
+        public Ai(int complexity)
         {
             _complexity = complexity;
             _random = new Random();
             _aiMoves = new List<int>(5);
-            _playerMoves = new List<int>(4);
+            _enemyMoves = new List<int>(4);
         }
 
         public int Move(string[] field)
@@ -56,7 +53,7 @@ namespace XO.Core
             {
                 if (field[i] == GameField.O)
                 {
-                    _playerMoves.Add(i);
+                    _enemyMoves.Add(i);
                 }
             }
 
@@ -68,7 +65,7 @@ namespace XO.Core
                 return winMove.Value;
             }
 
-            var defMove = FindMove(field, _playerMoves);
+            var defMove = FindMove(field, _enemyMoves);
 
             if (defMove.HasValue)
             {
@@ -92,13 +89,13 @@ namespace XO.Core
 
         public void Clear()
         {
-            _playerMoves.Clear();
+            _enemyMoves.Clear();
             _aiMoves.Clear();
         }
 
         private int? HardMode(IList<string> field)
         {
-            if (field.All(i => i == null))
+            if (field[8] == null)
             {
                 return 8;
             }

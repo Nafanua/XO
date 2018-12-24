@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\PvA.cs" />
-    <Compile Include="Core\Abstracts\IGame.cs" />
+    <Compile Include="Core\Ai.cs" />
+    <Compile Include="Core\Abstracts\IAi.cs" />
     <Compile Include="Forms\GameField.cs">
       <SubType>Form</SubType>
     </Compile>
