@@ -47,6 +47,8 @@ namespace XO.Core
             }
             while (field[pos] != null);
 
+            _aiMoves.Add(pos);
+
             return pos;
         }
 
