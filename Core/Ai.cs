@@ -33,7 +33,7 @@ namespace XO.Core
                 case Complexity.Unreal:
                     return SearchHardMove(field, true);
                 default:
-                    throw new ArgumentNullException();
+                    throw new ArgumentOutOfRangeException($"Ai complexity not set");
             }
         }
 
@@ -96,7 +96,6 @@ namespace XO.Core
 
         public void Clear()
         {
-            _enemyMoves.Clear();
             _aiMoves.Clear();
         }
 
