@@ -111,8 +111,6 @@ namespace XO.Forms
             }
 
             _ai?.Clear();
-
-            _turn = O;
         }
 
         private void AiMove()
