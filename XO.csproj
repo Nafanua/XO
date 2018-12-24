@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Core\Ai.cs" />
     <Compile Include="Core\Abstracts\IAi.cs" />
+    <Compile Include="Core\Enums\Complexity.cs" />
     <Compile Include="Forms\GameField.cs">
       <SubType>Form</SubType>
     </Compile>

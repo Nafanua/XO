@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using XO.Core.Abstracts;
+using XO.Core.Enums;
 using XO.Forms;
 
 namespace XO.Core
@@ -10,9 +11,10 @@ namespace XO.Core
         private readonly Random _random;
         private readonly List<int> _aiMoves;
         private readonly List<int> _enemyMoves;
-        private readonly int _complexity;
+        private readonly Complexity _complexity;
+        public Complexity Complexity => _complexity;
 
-        public Ai(int complexity)
+        public Ai(Complexity complexity)
         {
             _complexity = complexity;
             _random = new Random();
@@ -24,12 +26,14 @@ namespace XO.Core
         {
             switch (_complexity)
             {
-                case 0:
+                case Complexity.Easy:
                     return SearchEasyMove(field);
-                case 1:
+                case Complexity.Normal:
                     return SearchHardMove(field, false);
-                default:
+                case Complexity.Unreal:
                     return SearchHardMove(field, true);
+                default:
+                    throw new ArgumentNullException();
             }
         }
 

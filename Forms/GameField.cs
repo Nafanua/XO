@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using XO.Core;
 using XO.Core.Abstracts;
+using XO.Core.Enums;
 
 namespace XO.Forms
 {
@@ -111,6 +112,11 @@ namespace XO.Forms
             }
 
             _ai?.Clear();
+
+            if (_ai != null && _ai.Complexity == Complexity.Unreal)
+            {
+                _turn = O;
+            }
         }
 
         private void AiMove()
