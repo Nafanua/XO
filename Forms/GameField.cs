@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using XO.Core;
@@ -9,8 +10,8 @@ namespace XO.Forms
 {
     public partial class GameField : Form
     {
-        public const string X = "X";
-        public const string O = "O";
+        public static readonly string X = ConfigurationManager.AppSettings["X"];
+        public static readonly string O = ConfigurationManager.AppSettings["O"];
         private readonly IAi _ai;
         private readonly Form _start;
         private readonly string[] _field;
