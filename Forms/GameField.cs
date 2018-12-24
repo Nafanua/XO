@@ -60,13 +60,15 @@ namespace XO.Forms
 
         private void button8_Click(object sender, EventArgs e) => BtnClick(button8, 8);
 
+        private void button9_Click(object sender, EventArgs e) => ExitToMenu();
+
         private void NextMove() => _turn = _turn == X ? O : X;
 
         private void BtnClick(Control button, int index)
         {
-            button.Text = _turn;
+            if (_field[index] != null) return;
 
-            button.Enabled = false;
+            button.Text = _turn;
 
             _field[index] = _turn;
 
@@ -104,10 +106,9 @@ namespace XO.Forms
 
         private new void Refresh()
         {
-            for (var i = 0; i < 9; i++)
+            for (var i = 0; i < _field.Length; i++)
             {
-                Controls[i].ResetText();
-                Controls[i].Enabled = true;
+                Controls.Find("button" + i, false).First().ResetText();
                 _field[i] = null;
             }
 
@@ -124,6 +125,12 @@ namespace XO.Forms
             var move = _ai.Move(_field);
 
             BtnClick(Controls.Find("button" + move, false).First(), move);
+        }
+
+        private void ExitToMenu()
+        {
+            this.Close();
+            _start.Show();
         }
 
         protected override void OnClosed(EventArgs e)
