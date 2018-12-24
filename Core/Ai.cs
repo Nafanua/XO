@@ -9,14 +9,13 @@ namespace XO.Core
     public class Ai : IAi
     {
         private readonly Random _random;
-        private readonly List<int> _aiMoves;
-        private readonly List<int> _enemyMoves;
-        private readonly Complexity _complexity;
-        public Complexity Complexity => _complexity;
+        private readonly IList<int> _aiMoves;
+        private readonly IList<int> _enemyMoves;
+        public Complexity Complexity { get; }
 
         public Ai(Complexity complexity)
         {
-            _complexity = complexity;
+            Complexity = complexity;
             _random = new Random();
             _aiMoves = new List<int>(5);
             _enemyMoves = new List<int>(4);
@@ -24,7 +23,7 @@ namespace XO.Core
 
         public int Move(string[] field)
         {
-            switch (_complexity)
+            switch (Complexity)
             {
                 case Complexity.Easy:
                     return SearchEasyMove(field);
