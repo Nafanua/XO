@@ -41,55 +41,25 @@ namespace XO.Forms
             AiMove();
         }
 
-        private void button0_Click(object sender, EventArgs e)
-        {
-            BtnClick(button0, 0);
-        }
+        private void button0_Click(object sender, EventArgs e) => BtnClick(button0, 0);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            BtnClick(button1, 1);
-        }
+        private void button1_Click(object sender, EventArgs e) => BtnClick(button1, 1);
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            BtnClick(button2, 2);
-        }
+        private void button2_Click(object sender, EventArgs e) => BtnClick(button2, 2);
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            BtnClick(button3, 3);
-        }
+        private void button3_Click(object sender, EventArgs e) => BtnClick(button3, 3);
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            BtnClick(button4, 4);
-        }
+        private void button4_Click(object sender, EventArgs e) => BtnClick(button4, 4);
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            BtnClick(button5, 5);
-        }
+        private void button5_Click(object sender, EventArgs e) => BtnClick(button5, 5);
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            BtnClick(button6, 6);
-        }
+        private void button6_Click(object sender, EventArgs e) => BtnClick(button6, 6);
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            BtnClick(button7, 7);
-        }
+        private void button7_Click(object sender, EventArgs e) => BtnClick(button7, 7);
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            BtnClick(button8, 8);
-        }
+        private void button8_Click(object sender, EventArgs e) => BtnClick(button8, 8);
 
-        private void NextMove()
-        {
-            _turn = _turn == X ? O : X;
-        }
+        private void NextMove() => _turn = _turn == X ? O : X;
 
         private void BtnClick(Control button, int index)
         {
