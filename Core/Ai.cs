@@ -54,6 +54,8 @@ namespace XO.Core
 
         private int SearchHardMove(IList<string> field, bool isHard)
         {
+            _enemyMoves.Clear();
+
             for (var i = 0; i < field.Count; i++)
             {
                 if (field[i] == GameField.O)
