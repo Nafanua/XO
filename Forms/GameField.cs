@@ -24,6 +24,13 @@ namespace XO.Forms
             InitializeComponent();
         }
 
+        public GameField(Form start)
+        {
+            _field = new string[9];
+            _start = start;
+            InitializeComponent();
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

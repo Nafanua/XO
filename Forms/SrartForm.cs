@@ -13,7 +13,7 @@ namespace XO.Forms
 
         private void PvP_Click(object sender, EventArgs e)
         {
-            var gf = new GameField(null, this);
+            var gf = new GameField(this);
             gf.Show();
             this.Hide();
         }
