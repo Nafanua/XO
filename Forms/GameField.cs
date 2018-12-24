@@ -44,7 +44,7 @@ namespace XO.Forms
             AiMove();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void BackToMenu_Click(object sender, EventArgs e)
         {
             this.Close();
             _start.Show();

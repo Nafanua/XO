@@ -138,12 +138,12 @@
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button9.Location = new System.Drawing.Point(0, 306);
-            this.button9.Name = "button9";
+            this.button9.Name = "BackToMenu";
             this.button9.Size = new System.Drawing.Size(300, 44);
             this.button9.TabIndex = 9;
             this.button9.Text = "Back to menu";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.BackToMenu_Click);
             // 
             // GameField
             // 
