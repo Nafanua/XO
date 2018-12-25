@@ -39,6 +39,12 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.OW = new System.Windows.Forms.Label();
+            this.XWins = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Deadheats = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button0
@@ -137,19 +143,82 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(0, 306);
-            this.button9.Name = "BackToMenu";
+            this.button9.Location = new System.Drawing.Point(0, 369);
+            this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(300, 44);
             this.button9.TabIndex = 9;
             this.button9.Text = "Back to menu";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.BackToMenu_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 328);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = X + " Wins:";
+            // 
+            // OW
+            // 
+            this.OW.AutoSize = true;
+            this.OW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OW.Location = new System.Drawing.Point(97, 328);
+            this.OW.Name = "OW";
+            this.OW.Size = new System.Drawing.Size(52, 13);
+            this.OW.TabIndex = 11;
+            this.OW.Text = O + " Wins:";
+            // 
+            // XWins
+            // 
+            this.XWins.AutoSize = true;
+            this.XWins.Location = new System.Drawing.Point(62, 328);
+            this.XWins.Name = "XWins";
+            this.XWins.Size = new System.Drawing.Size(13, 13);
+            this.XWins.TabIndex = 12;
+            this.XWins.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(148, 328);
+            this.label4.Name = "OWins";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(179, 328);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Dead heats:";
+            // 
+            // Deadheats
+            // 
+            this.Deadheats.AutoSize = true;
+            this.Deadheats.Location = new System.Drawing.Point(250, 328);
+            this.Deadheats.Name = "Deadheats";
+            this.Deadheats.Size = new System.Drawing.Size(13, 13);
+            this.Deadheats.TabIndex = 15;
+            this.Deadheats.Text = "0";
+            // 
             // GameField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 355);
+            this.ClientSize = new System.Drawing.Size(301, 425);
+            this.Controls.Add(this.Deadheats);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.XWins);
+            this.Controls.Add(this.OW);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -165,6 +234,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -180,5 +250,11 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label OW;
+        private System.Windows.Forms.Label XWins;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Deadheats;
     }
 }

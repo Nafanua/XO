@@ -17,6 +17,9 @@ namespace XO.Forms
         private readonly string[] _field;
         private bool _isAi;
         private string _turn = X;
+        private int _xWins;
+        private int _oWins;
+        private int _deadHeats;
 
         private void NextMove() => _turn = _turn == X ? O : X;
 
@@ -25,6 +28,9 @@ namespace XO.Forms
             _field = new string[9];
             _ai = aiMode;
             _start = start;
+            _oWins = 0;
+            _xWins = 0;
+            _deadHeats = 0;
             InitializeComponent();
         }
 
@@ -76,12 +82,23 @@ namespace XO.Forms
                 (_field[6] == _field[7] & _field[8] == _field[6] & _field[6] != null))
             {
                 MessageBox.Show($@"{_turn} WIN!");
+
+                if (_turn == O)
+                {
+                    label4.Text = (++_oWins).ToString();
+                }
+                else
+                {
+                    XWins.Text= (++_xWins).ToString();
+                }
+
                 Refresh();
             }
 
             if (_field.All(k => k != null))
             {
                 MessageBox.Show(@"Dead heat");
+                Deadheats.Text = (++_deadHeats).ToString();
                 Refresh();
             }
 
