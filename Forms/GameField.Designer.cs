@@ -1,4 +1,6 @@
-﻿namespace XO.Forms
+﻿using System.Windows.Forms;
+
+namespace XO.Forms
 {
     partial class GameField
     {
@@ -42,7 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OW = new System.Windows.Forms.Label();
             this.XWins = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.OWin = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Deadheats = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -182,12 +184,12 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(148, 328);
-            this.label4.Name = "OWins";
-            this.label4.Size = new System.Drawing.Size(13, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "0";
+            this.OWin.AutoSize = true;
+            this.OWin.Location = new System.Drawing.Point(148, 328);
+            this.OWin.Name = "OWins";
+            this.OWin.Size = new System.Drawing.Size(13, 13);
+            this.OWin.TabIndex = 13;
+            this.OWin.Text = "0";
             // 
             // label5
             // 
@@ -215,7 +217,7 @@
             this.ClientSize = new System.Drawing.Size(301, 425);
             this.Controls.Add(this.Deadheats);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.OWin);
             this.Controls.Add(this.XWins);
             this.Controls.Add(this.OW);
             this.Controls.Add(this.label1);
@@ -253,7 +255,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label OW;
         private System.Windows.Forms.Label XWins;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label OWin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label Deadheats;
     }

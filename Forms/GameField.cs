@@ -85,7 +85,7 @@ namespace XO.Forms
 
                 if (_turn == O)
                 {
-                    label4.Text = (++_oWins).ToString();
+                    OWin.Text = (++_oWins).ToString();
                 }
                 else
                 {
