@@ -20,17 +20,10 @@ namespace XO.Forms
 
         private void NextMove() => _turn = _turn == X ? O : X;
 
-        public GameField(IAi aiMode, Form start)
+        public GameField(Form start, IAi aiMode = null )
         {
             _field = new string[9];
             _ai = aiMode;
-            _start = start;
-            InitializeComponent();
-        }
-
-        public GameField(Form start)
-        {
-            _field = new string[9];
             _start = start;
             InitializeComponent();
         }

@@ -22,7 +22,7 @@ namespace XO.Forms
         private void PvA_Click(object sender, EventArgs e)
         {
             var aiMode = new Ai(Complexity.Easy);
-            var gf = new GameField(aiMode, this);
+            var gf = new GameField(this, aiMode);
             gf.Show();
             this.Hide();
         }
@@ -30,7 +30,7 @@ namespace XO.Forms
         private void Unreal_Click(object sender, EventArgs e)
         {
             var aiMode = new Ai(Complexity.Unreal);
-            var gf = new GameField(aiMode, this);
+            var gf = new GameField(this, aiMode);
             gf.Show();
             this.Hide();
         }
@@ -38,7 +38,7 @@ namespace XO.Forms
         private void MiddleAi_Click(object sender, EventArgs e)
         {
             var aiMode = new Ai(Complexity.Normal);
-            var gf = new GameField(aiMode, this);
+            var gf = new GameField(this, aiMode);
             gf.Show();
             this.Hide();
         }
