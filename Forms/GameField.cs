@@ -45,6 +45,12 @@ namespace XO.Forms
             AiMove();
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            _start.Show();
+        }
+
         private void BackToMenu_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -130,12 +136,6 @@ namespace XO.Forms
             var move = _ai.Move(_field);
 
             BtnClick(Controls.Find(move.ToString(), false).First(), new EventArgs());
-        }
-
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            _start.Show();
         }
     }
 }
