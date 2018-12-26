@@ -49,24 +49,14 @@ namespace XO.Core
 
         private int SearchHardMove(IList<string> field, bool isUnreal)
         {
-            var possibleMoves = new List<int>(9);
-
-            for (var i = 0; i < field.Count; i++)
-            {
-                if (field[i] == null)
-                {
-                    possibleMoves.Add(i);
-                }
-            }
-
-            var winMove = FindMove(field, possibleMoves, GameField.X);
+            var winMove = FindMove(field, GameField.X);
 
             if (winMove.HasValue)
             {
                 return winMove.Value;
             }
 
-            var defMove = FindMove(field, possibleMoves, GameField.O);
+            var defMove = FindMove(field, GameField.O);
 
             if (defMove.HasValue)
             {
@@ -93,19 +83,21 @@ namespace XO.Core
             return corners.FirstOrDefault(i => i != null && field[i.Value] == null);
         }
 
-        private int? FindMove(IList<string> field, IEnumerable<int> possibleMoves, string turn)
+        private int? FindMove(IList<string> field, string turn)
         {
-            foreach (var t in possibleMoves)
+            for (var i = 0; i < field.Count; i++)
             {
-                field[t] = turn;
+                if (field[i] != null) continue;
+
+                field[i] = turn;
 
                 if (GameField.IsWin(field))
                 {
-                    field[t] = null;
-                    return t;
+                    field[i] = null;
+                    return i;
                 }
 
-                field[t] = null;
+                field[i] = null;
             }
 
             return null;
