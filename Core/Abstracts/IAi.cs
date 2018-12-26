@@ -6,6 +6,5 @@ namespace XO.Core.Abstracts
     {
         Complexity Complexity { get;}
         int Move(string[] field);
-        void Clear();
     }
 }

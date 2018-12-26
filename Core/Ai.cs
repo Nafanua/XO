@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using XO.Core.Abstracts;
 using XO.Core.Enums;
 using XO.Forms;
@@ -9,16 +10,12 @@ namespace XO.Core
     public class Ai : IAi
     {
         private readonly Random _random;
-        private readonly IList<int> _aiMoves;
-        private readonly IList<int> _enemyMoves;
         public Complexity Complexity { get; }
 
         public Ai(Complexity complexity)
         {
             Complexity = complexity;
             _random = new Random();
-            _aiMoves = new List<int>(5);
-            _enemyMoves = new List<int>(4);
         }
 
         public int Move(string[] field)
@@ -46,36 +43,32 @@ namespace XO.Core
             }
             while (field[pos] != null);
 
-            _aiMoves.Add(pos);
-
             return pos;
         }
 
         private int SearchHardMove(IList<string> field, bool isHard)
         {
-            _enemyMoves.Clear();
+            var possibleMoves = new List<int>(9);
 
             for (var i = 0; i < field.Count; i++)
             {
-                if (field[i] == GameField.O)
+                if (field[i] == null)
                 {
-                    _enemyMoves.Add(i);
+                    possibleMoves.Add(i);
                 }
             }
 
-            var winMove = FindMove(field, _aiMoves);
+            var winMove = FindMove(field, possibleMoves, GameField.X);
 
             if (winMove.HasValue)
             {
-                _aiMoves.Add(winMove.Value);
                 return winMove.Value;
             }
 
-            var defMove = FindMove(field, _enemyMoves);
+            var defMove = FindMove(field, possibleMoves, GameField.O);
 
             if (defMove.HasValue)
             {
-                _aiMoves.Add(defMove.Value);
                 return defMove.Value;
             }
 
@@ -85,17 +78,11 @@ namespace XO.Core
 
                 if (hardMode.HasValue)
                 {
-                    _aiMoves.Add(hardMode.Value);
                     return hardMode.Value;
                 }
             }
 
             return SearchEasyMove(field);
-        }
-
-        public void Clear()
-        {
-            _aiMoves.Clear();
         }
 
         private int? HardMode(IList<string> field)
@@ -123,75 +110,19 @@ namespace XO.Core
             return null;
         }
 
-        private int? FindMove(IList<string> field, ICollection<int> moves)
+        private int? FindMove(IList<string> field, IList<int> possibleMoves, string turn)
         {
-            if (((moves.Contains(0) && moves.Contains(2)) |
-                (moves.Contains(7) && moves.Contains(4))) &
-                field[1] == null)
+            foreach (var t in possibleMoves)
             {
-                return 1;
-            }
+                field[t] = turn;
 
-            if (((moves.Contains(0) && moves.Contains(6)) |
-                 (moves.Contains(4) && moves.Contains(5))) &
-                field[3] == null)
-            {
-                return 3;
-            }
+                if (GameField.Win(field))
+                {
+                    field[t] = null;
+                    return t;
+                }
 
-            if (((moves.Contains(0) && moves.Contains(8)) |
-                 (moves.Contains(2) && moves.Contains(6)) |
-                 (moves.Contains(1) && moves.Contains(7)) |
-                 (moves.Contains(3) && moves.Contains(5))) &
-                field[4] == null)
-            {
-                return 4;
-            }
-
-            if (((moves.Contains(2) && moves.Contains(8)) |
-                 (moves.Contains(3) && moves.Contains(4))) &
-                field[5] == null)
-            {
-                return 5;
-            }
-
-            if (((moves.Contains(6) && moves.Contains(8)) |
-                 (moves.Contains(1) && moves.Contains(4))) &
-                field[7] == null)
-            {
-                return 7;
-            }
-
-            if (((moves.Contains(0) && moves.Contains(1)) |
-                 (moves.Contains(8) && moves.Contains(5)) |
-                 (moves.Contains(4) && moves.Contains(6))) &
-                field[2] == null)
-            {
-                return 2;
-            }
-
-            if (((moves.Contains(1) && moves.Contains(2)) |
-                 (moves.Contains(6) && moves.Contains(3)) |
-                 (moves.Contains(8) && moves.Contains(4))) &
-                field[0] == null)
-            {
-                return 0;
-            }
-
-            if (((moves.Contains(2) && moves.Contains(5)) |
-                 (moves.Contains(7) && moves.Contains(6)) |
-                 (moves.Contains(0) && moves.Contains(4))) &
-                field[8] == null)
-            {
-                return 8;
-            }
-
-            if (((moves.Contains(7) && moves.Contains(8)) |
-                 (moves.Contains(2) && moves.Contains(4)) |
-                 (moves.Contains(0) && moves.Contains(3))) &
-                field[6] == null)
-            {
-                return 6;
+                field[t] = null;
             }
 
             return null;

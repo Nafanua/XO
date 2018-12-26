@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace XO.Forms
 
         private void NextMove() => _turn = _turn == X ? O : X;
 
-        public GameField(Form start, IAi aiMode = null )
+        public GameField(Form start, IAi aiMode = null)
         {
             _field = new string[9];
             _ai = aiMode;
@@ -72,14 +73,7 @@ namespace XO.Forms
 
         private void WhoWin()
         {
-            if ((_field[0] == _field[1] & _field[0] == _field[2] & _field[0] != null) | 
-                (_field[0] == _field[4] & _field[8] == _field[0] & _field[0] != null) | 
-                (_field[0] == _field[3] & _field[6] == _field[0] & _field[0] != null) | 
-                (_field[1] == _field[4] & _field[7] == _field[1] & _field[1] != null) | 
-                (_field[2] == _field[5] & _field[8] == _field[2] & _field[2] != null) | 
-                (_field[2] == _field[4] & _field[6] == _field[2] & _field[2] != null) | 
-                (_field[3] == _field[4] & _field[5] == _field[3] & _field[3] != null) | 
-                (_field[6] == _field[7] & _field[8] == _field[6] & _field[6] != null))
+            if (Win(_field))
             {
                 MessageBox.Show($@"{_turn} WIN!");
 
@@ -89,7 +83,7 @@ namespace XO.Forms
                 }
                 else
                 {
-                    XWins.Text= (++_xWins).ToString();
+                    XWins.Text = (++_xWins).ToString();
                 }
 
                 Refresh();
@@ -105,6 +99,18 @@ namespace XO.Forms
             NextMove();
         }
 
+        public static bool Win(IList<string> field)
+        {
+            return (field[0] == field[1] & field[0] == field[2] & field[0] != null) |
+                   (field[0] == field[4] & field[8] == field[0] & field[0] != null) |
+                   (field[0] == field[3] & field[6] == field[0] & field[0] != null) |
+                   (field[1] == field[4] & field[7] == field[1] & field[1] != null) |
+                   (field[2] == field[5] & field[8] == field[2] & field[2] != null) |
+                   (field[2] == field[4] & field[6] == field[2] & field[2] != null) |
+                   (field[3] == field[4] & field[5] == field[3] & field[3] != null) |
+                   (field[6] == field[7] & field[8] == field[6] & field[6] != null);
+        }
+
         private new void Refresh()
         {
             for (var i = 0; i < _field.Length; i++)
@@ -112,8 +118,6 @@ namespace XO.Forms
                 Controls.Find(i.ToString(), false).First().ResetText();
                 _field[i] = null;
             }
-
-            _ai?.Clear();
 
             if (_ai != null && _ai.Complexity == Complexity.Unreal)
             {
