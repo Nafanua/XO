@@ -46,7 +46,7 @@ namespace XO.Core
             return pos;
         }
 
-        private int SearchHardMove(IList<string> field, bool isHard)
+        private int SearchHardMove(IList<string> field, bool isUnreal)
         {
             var possibleMoves = new List<int>(9);
 
@@ -72,20 +72,20 @@ namespace XO.Core
                 return defMove.Value;
             }
 
-            if (isHard)
+            if (isUnreal)
             {
-                var hardMode = HardMode(field);
+                var unrealMode = UnrealMode(field);
 
-                if (hardMode.HasValue)
+                if (unrealMode.HasValue)
                 {
-                    return hardMode.Value;
+                    return unrealMode.Value;
                 }
             }
 
             return SearchEasyMove(field);
         }
 
-        private int? HardMode(IList<string> field)
+        private int? UnrealMode(IList<string> field)
         {
             var corners = new int? [] {8, 2, 6, 0};
 
