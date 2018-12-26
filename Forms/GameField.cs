@@ -107,14 +107,11 @@ namespace XO.Forms
 
         public static bool IsWin(IList<string> field)
         {
-            return (field[0] == field[1] & field[0] == field[2] & field[0] != null) |
-                   (field[0] == field[4] & field[8] == field[0] & field[0] != null) |
-                   (field[0] == field[3] & field[6] == field[0] & field[0] != null) |
-                   (field[1] == field[4] & field[7] == field[1] & field[1] != null) |
-                   (field[2] == field[5] & field[8] == field[2] & field[2] != null) |
-                   (field[2] == field[4] & field[6] == field[2] & field[2] != null) |
-                   (field[3] == field[4] & field[5] == field[3] & field[3] != null) |
-                   (field[6] == field[7] & field[8] == field[6] & field[6] != null);
+            for (var i = 0; i < 3; i++) if (field[i] == field[i + 3] & field[i] == field[i + 6] & field[i] != null) return true;
+            for (var i = 0; i < field.Count; i = i + 3) if (field[i] == field[i + 1] & field[i] == field[i + 2] & field[i] != null) return true;
+            if ((field[0] == field[4] & field[8] == field[0] & field[0] != null) | (field[2] == field[4] & field[6] == field[2] & field[2] != null)) return true;
+
+            return false;
         }
 
         private new void Refresh()
