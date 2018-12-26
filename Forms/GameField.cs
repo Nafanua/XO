@@ -22,6 +22,9 @@ namespace XO.Forms
         private int _oWins;
         private int _deadHeats;
 
+        private static readonly int[][] WinRules = new int[8][]
+            {new [] {0, 1, 2}, new [] {3, 4, 5}, new [] {6, 7, 8}, new [] {0, 3, 6}, new [] {1, 4, 7}, new [] {2, 5, 8}, new [] {0, 4, 8}, new [] {2, 4, 6}};
+
         private void NextMove() => _turn = _turn == X ? O : X;
 
         public GameField(Form start, IAi aiMode = null)
@@ -107,11 +110,7 @@ namespace XO.Forms
 
         public static bool IsWin(IList<string> field)
         {
-            for (var i = 0; i < 3; i++) if (field[i] == field[i + 3] & field[i] == field[i + 6] & field[i] != null) return true;
-            for (var i = 0; i < field.Count; i = i + 3) if (field[i] == field[i + 1] & field[i] == field[i + 2] & field[i] != null) return true;
-            if ((field[0] == field[4] & field[8] == field[0] & field[0] != null) | (field[2] == field[4] & field[6] == field[2] & field[2] != null)) return true;
-
-            return false;
+            return WinRules.Any(rule => field[rule[0]] == field[rule[1]] & field[rule[0]] == field[rule[2]] & field[rule[0]] != null);
         }
 
         private new void Refresh()
