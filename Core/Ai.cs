@@ -74,11 +74,11 @@ namespace XO.Core
 
             if (isUnreal)
             {
-                var unrealMode = UnrealMode(field);
+                var unrealMove = UnrealMode(field);
 
-                if (unrealMode.HasValue)
+                if (unrealMove.HasValue)
                 {
-                    return unrealMode.Value;
+                    return unrealMove.Value;
                 }
             }
 
