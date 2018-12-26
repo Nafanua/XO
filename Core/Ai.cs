@@ -58,8 +58,6 @@ namespace XO.Core
                 }
             }
 
-            var t = field.Select(field.IndexOf);
-
             var winMove = FindMove(field, possibleMoves, GameField.X);
 
             if (winMove.HasValue)
@@ -89,14 +87,12 @@ namespace XO.Core
 
         private int? HardMode(IList<string> field)
         {
-            var corners = new [] {8, 2, 6, 0};
+            var corners = new int? [] {8, 2, 6, 0};
 
-            int? result = corners.FirstOrDefault(i => field[i] == null);
-            
-            return result;
+            return corners.FirstOrDefault(i => i != null && field[i.Value] == null);
         }
 
-        private int? FindMove(IList<string> field, IList<int> possibleMoves, string turn)
+        private int? FindMove(IList<string> field, IEnumerable<int> possibleMoves, string turn)
         {
             foreach (var t in possibleMoves)
             {
