@@ -73,7 +73,7 @@ namespace XO.Forms
 
         private void WhoWin()
         {
-            if (Win(_field))
+            if (IsWin(_field))
             {
                 MessageBox.Show($@"{_turn} WIN!");
 
@@ -99,7 +99,7 @@ namespace XO.Forms
             NextMove();
         }
 
-        public static bool Win(IList<string> field)
+        public static bool IsWin(IList<string> field)
         {
             return (field[0] == field[1] & field[0] == field[2] & field[0] != null) |
                    (field[0] == field[4] & field[8] == field[0] & field[0] != null) |

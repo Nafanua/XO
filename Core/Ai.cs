@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using XO.Core.Abstracts;
 using XO.Core.Enums;
@@ -98,7 +99,7 @@ namespace XO.Core
             {
                 field[t] = turn;
 
-                if (GameField.Win(field))
+                if (GameField.IsWin(field))
                 {
                     field[t] = null;
                     return t;
