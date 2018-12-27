@@ -62,24 +62,14 @@ namespace XO.Core
                 return defMove.Value;
             }
 
-            if (isUnreal)
-            {
-                var unrealMove = UnrealMode(field);
-
-                if (unrealMove.HasValue)
-                {
-                    return unrealMove.Value;
-                }
-            }
-
-            return SearchEasyMove(field);
+            return isUnreal ? UnrealMode(field) : SearchEasyMove(field);
         }
 
-        private int? UnrealMode(IList<string> field)
+        private int UnrealMode(IList<string> field)
         {
-            var corners = new int? [] {8, 2, 6, 0};
+            var corners = new [] {8, 2, 6, 0};
 
-            return corners.FirstOrDefault(i => i != null && field[i.Value] == null);
+            return corners.FirstOrDefault(i => field[i] == null);
         }
 
         private int? FindMove(IList<string> field, string turn)
